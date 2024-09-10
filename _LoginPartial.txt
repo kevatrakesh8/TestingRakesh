@@ -1,0 +1,123 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using DynamicFormDataPortal.Models 
+
+
+
+@if (Request.IsAuthenticated)
+{
+    var userName = User.Identity.GetUserName();
+    var claimsIdentity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+    var role = claimsIdentity.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value;
+
+    <div class="col-xxl-6 col-xl-7 col-lg-6 d-none d-xl-block">
+        <div class="main-menu text-xl-center d-none d-xl-block">
+            <nav class="tp-main-menu-content">
+                <ul>
+                    @if (role == "Admin")
+                    {
+                        <li class="has-dropdown tp-static">@Html.ActionLink("Forms", "Index", "Forms", new { area = "" }, new { @class = "tp-static" })</li>
+                        <li class="has-dropdown tp-static">@Html.ActionLink("FormField", "Index", "FormField", new { area = "" }, new { @class = "tp-static" })</li>
+                        <li class="has-dropdown tp-static">@Html.ActionLink("FormGenerates", "Index", "FormGenerates", new { area = "" }, new { @class = "tp-static" })</li>
+                        <li class="has-dropdown tp-static">@Html.ActionLink("SharedFormsList", "Index", "SharedFormsList", new { area = "" }, new { @class = "tp-static" })</li>
+                    }
+                    else
+                    {
+                        <li class="has-dropdown tp-static">@Html.ActionLink("UserViewFrom", "Index", "UserViewFrom", new { area = "" }, new { @class = "tp-static" })</li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div> 
+
+    <div class="col-xxl-5 col-xl-3 col-lg-6 col-md-6 col-6">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="tp-header-2-contact d-flex align-items-center justify-content-end">
+                <div class="col-xxl-6 col-xl-7 col-lg-6 d-none d-xl-block">
+                    <div class="main-menu text-xl-center d-none d-xl-block">
+
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <nav class="tp-main-menu-content">
+                                <ul>
+                                    <li class="">@Html.ActionLink("Hello " + userName + "!", "Index", "Manage", new { area = "" }, new { title = "Manage", @class = "" })</li>
+                                    <li class=""><a class="" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                </ul>
+                            </nav>
+                        }
+                    </div>
+                </div>
+                <div class="tp-header-inner-login tp-header-user-hover">
+                    <button><img src="~/DashboardTheme/assets/img/event/user.jpg" alt=""></button>
+                    <div class="tp-header-user-box">
+                        <div class="tp-header-user-content">
+                            <div class="tp-header-user-profile d-flex align-items-center">
+                                <div class="tp-header-user-profile-thumb">
+                                    <img src="~/DashboardTheme/assets/img/event/user.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    </div> 
+
+}
+else
+{
+    <div class="col-xxl-6 col-xl-7 col-lg-6 d-none d-xl-block">
+        <div class="main-menu text-xl-center d-none d-xl-block">
+            <nav class="tp-main-menu-content">
+                <ul>
+                    <li class="has-dropdown tp-static">@Html.ActionLink("UserViewFrom", "Index", "UserViewFrom", new { area = "" }, new { @class = "tp-static" })</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col-xxl-5 col-xl-3 col-lg-6 col-md-6 col-6">
+        <div class="tp-header-2-contact d-flex align-items-center justify-content-end">
+            <div class="col-xxl-6 col-xl-7 col-lg-6 d-none d-xl-block">
+                <div class="main-menu text-xl-center d-none d-xl-block">
+                    <nav class="tp-main-menu-content">
+                        <ul>
+                            <li class="has-dropdown tp-static">@Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "tp-static" })</li>
+                            <li class="has-dropdown tp-static">@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, new { @class = "tp-static" })</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="tp-header-inner-login tp-header-user-hover">
+                <button><img src="~/DashboardTheme/assets/img/event/user.jpg" alt=""></button>
+                <div class="tp-header-user-box">
+                    <div class="tp-header-user-content">
+                        <div class="tp-header-user-profile d-flex align-items-center">
+                            <div class="tp-header-user-profile-thumb">
+                                <img src="~/DashboardTheme/assets/img/event/user.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+
+
+
+
+ 

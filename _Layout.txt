@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/animate.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/slick.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/flatpickr.min.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/font-awesome-pro.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/spacing.css">
+    <link rel="stylesheet" href="~/DashboardTheme/assets/css/main.css">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/DashboardTheme/assets/img/logo/favicon.png">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>-->  @*not getting  librarary NGL*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+
+
+
+    <!-- Bootstrap Bundle with Popper.js -->
+    @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Flatpickr CSS and JS (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <style>
+        /* site.css */
+
+        /* Apply a modern font to the entire page */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #fff;
+        }
+
+        /*.bg-orange {
+            background-color: #ff6600;*/ /* Orange color */
+        /*}*/
+
+            .nav-link {
+                margin-right: 15px;
+            }
+
+            .nav-link:hover {
+                color: #fff;
+                background-color: #cc5200; /* Darker orange on hover */
+            }
+
+            header.tp-header-4-main {
+                background-color: #ff6600;
+            }
+
+
+            /* Footer styling */
+            footer {
+                padding: 20px 0;
+                text-align: center;
+                background-color: #f8f9fa;
+                border-top: 1px solid #e7e7e7;
+            }
+
+            footer p {
+                margin: 0;
+                color: #666;
+            }
+    </style>
+</head>
+<body>
+    <div class="back-to-top-wrapper">
+        <button id="back_to_top" type="button" class="back-to-top-btn">
+            <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+
+    <header class="header-area p-relative tp-header-5" style="background-color: orangered">
+        <div id="header-sticky" class="tp-header-4-main" style="background-color: orangered">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-xxl-1 col-xl-3 col-lg-6 col-6">
+                        <div class="tp-header-4-logo tp-header-logo">
+                            <a href="@Url.Action("Index","Home")">
+                                <img class="logo-1" src="~/DashboardTheme/assets/img/logo/logo.png" alt="logo">
+                                <img class="logo-2" src="~/DashboardTheme/assets/img/logo/logo.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <!-- footer-area-start -->
+    <footer>
+        <div class="tp-footer-4">
+            <div class="tp-footer-4-bg">
+                <div class="container">
+                    <div class="tp-footer-4-top">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4 class="tp-footer-4-top-title">Sign now for offers <br> and keep yourself informed!</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="tp-footer-4-top-form">
+                                    <form action="#">
+                                        <input type="text" placeholder="Enter your email...">
+                                        <button class="tp-footer-4-top-btn">
+                                            Send
+                                            <span>
+                                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.0029 1L15.0029 6L10.0029 11" stroke="currentColor" stroke-width="1.5"
+                                                          stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M1 6H14.8633" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                                          stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tp-footer-4-main pt-90 pb-70">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-6">
+                                <div class="tp-footer-widget tp-footer-4-col-1 mb-30">
+                                    <div class="tp-footer-4-btn">
+                                        <a class="active" href="university-apply.html">Apply Now</a>
+                                        <a href="contact.html">Contact Us</a>
+                                        <a href="contact.html">Visit Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="tp-footer-widget tp-footer-widget-4 has-border tp-footer-4-col-2 mb-30">
+                                    <div class="tp-footer-widget-link">
+                                        <ul>
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="#">Courses</a></li>
+                                            <li><a href="#">Parent Portal</a></li>
+                                            <li><a href="#">News & Blogs</a></li>
+                                            <li><a href="#">Events</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="tp-footer-widget tp-footer-widget-4 tp-footer-4-col-3 mb-30">
+                                    <div class="tp-footer-widget-link">
+                                        <ul>
+                                            <li><a href="#">Students</a></li>
+                                            <li><a href="#">Addmition</a></li>
+                                            <li><a href="#">Faculty & Staffs</a></li>
+                                            <li><a href="#">Tuition & Fees</a></li>
+                                            <li><a href="#">Dress Code</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="tp-footer-widget tp-footer-widget-4 tp-footer-4-col-4 mb-30">
+                                    <div class="tp-footer-4-info">
+                                        <span>Germany — <br> 785 15h Street, Office 478 Berlin, De 81566</span>
+                                        <div class="tp-footer-4-mail">
+                                            <a href="mailto:info@email.com">info@email.com</a>
+                                        </div>
+                                        <div class="tp-footer-4-phone">
+                                            <a href="tel:0123456789">+(402) 763 282 46</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tp-footer-4-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-3">
+                            <div class="tp-footer-4-logo tp-header-logo">
+                                <a href="#"><img src="~/DashboardTheme/assets/img/logo/logo-white.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-5">
+                            <div class="tp-footer-4-copyright text-start text-md-center">
+                                <span>Copyright © 2024 <a href="#">ThemePure</a></span>
+                                <span class="span"><a href="#">All Rights Reserved</a></span>
+                                <span class="span"><a href="#">Privacy & Policy</a></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <div class="tp-footer-4-social text-md-end">
+                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-area-end -->
+    <!-- JS here -->
+    <script src="~/DashboardTheme/assets/js/vendor/jquery.js"></script>
+    <script src="~/DashboardTheme/assets/js/vendor/waypoints.js"></script>
+    <script src="~/DashboardTheme/assets/js/bootstrap-bundle.js"></script>
+    <script src="~/DashboardTheme/assets/js/swiper-bundle.js"></script>
+    <script src="~/DashboardTheme/assets/js/slick.js"></script>
+    <script src="~/DashboardTheme/assets/js/magnific-popup.js"></script>
+    <script src="~/DashboardTheme/assets/js/nice-select.js"></script>
+    <script src="~/DashboardTheme/assets/js/purecounter.js"></script>
+    <script src="~/DashboardTheme/assets/js/wow.js"></script>
+    <script src="~/DashboardTheme/assets/js/isotope-pkgd.js"></script>
+    <script src="~/DashboardTheme/assets/js/imagesloaded-pkgd.js"></script>
+    <script src="~/DashboardTheme/assets/js/flatpickr.js"></script>
+    <script src="~/DashboardTheme/assets/js/ajax-form.js"></script>
+    <script src="~/DashboardTheme/assets/js/main.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
